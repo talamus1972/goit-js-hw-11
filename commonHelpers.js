@@ -1,4 +1,10 @@
-import"./assets/vendor-f070e68e.js";(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))a(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const s of r.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&a(s)}).observe(document,{childList:!0,subtree:!0});function i(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerpolicy&&(r.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?r.credentials="include":e.crossorigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function a(e){if(e.ep)return;e.ep=!0;const r=i(e);fetch(e.href,r)}})();const t=new URL("https://pixabay.com/api");t.searchParams.append("key","41564235-b9b3b0b401bd21d391a887255");t.searchParams.append("q","41564235-b9b3b0b401bd21d391a887255");t.searchParams.append("image_type","foto");t.searchParams.append("orientation","horizontal");t.searchParams.append("safesearch","true");fetch(t).then(o=>o.json()).then(o=>{document.body.insertAdjacentHTML("beforeend",`
-        <img src="${o.hits[0].largeImageURL}"/> 
-    `)});
+import"./assets/vendor-f070e68e.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function l(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?t.credentials="include":e.crossorigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(e){if(e.ep)return;e.ep=!0;const t=l(e);fetch(e.href,t)}})();document.querySelector(".gallery");fetch("https://pixabay.com/api/?key=41564235-b9b3b0b401bd21d391a887255").then(o=>o.json()).then(o=>{console.log(o),o.reduce((r,l)=>r+`
+// <li class="gallery-item">
+
+<img class="gallery-image"
+src = '${l.pageURL}' 
+alt = '${l.tags}'/>
+
+// </li>
+`,"")}).catch(o=>{console.log(o)});
 //# sourceMappingURL=commonHelpers.js.map
