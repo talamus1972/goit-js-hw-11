@@ -124,7 +124,7 @@ input:active {
   outline: none;
 }
 
-.search-btn {
+.btn {
   box-sizing: border-box;
   padding: 8px 16px;
   border-radius: 8px;
