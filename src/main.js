@@ -8,7 +8,7 @@ const form = document.querySelector('.form');
 const imagesGallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 
-const BASE_URL = "https://pixabay.com/api/";
+// const BASE_URL = "https://pixabay.com/api/";
 const API_KEY = "41564235-b9b3b0b401bd21d391a887255";
 
 const searchParamsDefault = {
@@ -69,12 +69,12 @@ const getImages = (params) => {
             lightbox.refresh();
         })
     
-        .catch(params => {
-            iziToast.error({
-                position: 'topRight',
-                message:
-                    'Sorry, there are no images matching your search query. Please try again!',
-            });
+        .catch(error => {
+    iziToast.error({
+        position: 'topRight',
+        message: 'Sorry, there was an error fetching images. Please try again!',
+    });
+    console.error('Error fetching images:', error);
         })
         .finally(() => {
             loader.style.display = 'none';
