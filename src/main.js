@@ -1,7 +1,8 @@
-// Описаний у документації
+
 import iziToast from "izitoast";
-// Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 const imagesGallery = document.querySelector('.gallery');
 // const url = new URL("https://pixabay.com/api/");
