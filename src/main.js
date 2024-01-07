@@ -70,13 +70,13 @@ const getImages = (params) => {
             lightbox.refresh();
             }
             else {
-                 iziToast.error({
-        position: 'topRight',
-        messageColor: '#FFFFFF',
-        backgroundColor: '#EF4040',
-        messageSize: '8px',
-        messageLineHeight: '1.5',
-        message: 'Sorry, there are no images matching your search query. Please try again!',
+            iziToast.error({
+            position: 'topRight',
+            messageColor: '#FFFFFF',
+            backgroundColor: '#EF4040',
+            titleSize: '8px',
+            closeOnEscape: true,
+            message: 'Sorry, there are no images matching your search query. Please try again!',
       });
             }
        
@@ -91,61 +91,6 @@ const getImages = (params) => {
     
 }
 
-
-
-
-
-
-
-
-// const getHtml = ({hits}) => {
-//      imagesGallery.innerHTML = hits.reduce((html, image) => html + `
-//         <li class="gallery-item">
-//          <a href=${image.largeImageURL}> 
-//           <img class="gallery-img" src =${image.webformatURL} alt=${image.tags}/>
-//         </a>
-//         <div class="gallery-text-box">
-//           <p>Likes: <span class="text-value">${image.likes}</span></p>
-//           <p>views: <span class="text-value">${image.views}</span></p>
-//           <p>comments: <span class="text-value">${image.comments}</span></p>
-//           <p>downloads: <span class="text-value">${image.downloads}</span></p>
-//       </div>
-//        </li>
-//     `, "")  
-//     lightbox.refresh();  
-// }
-
-// function renderImages(params) {
-// getImages(params)
-//         .then(params => {
-//             getHtml(params);
-          
-//         })
-//     .catch(params => {      
-//               console.log("eeeeeeeeeeeee");
-        // iziToast.error({
-        // position: 'topRight',
-        // messageColor: '#FFFFFF',
-        // backgroundColor: '#EF4040',
-        // messageSize: '16px',
-        // messageLineHeight: '1.5',
-        // message: 'Sorry, there are no images matching your search query. Please try again!',
-        // });
-//         })
-//        .finally(() => {
-//        loader.style.display = 'none';
-//     });
-//  }
-       
-
-
-
-
-         
-
-
-
-    
 
 
 
