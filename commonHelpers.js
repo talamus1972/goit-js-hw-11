@@ -10,5 +10,5 @@ import{S as c,i as u}from"./assets/vendor-46aac873.js";(function(){const t=docum
           <p>downloads: <span class="text-value">${o.downloads}</span></p>
       </div>
        </li>
-    `,""),m.refresh()}).catch(t=>{u.error({position:"topRight",message:"Sorry, there are no images matching your search query. Please try again!"})}).finally(()=>{i.style.display="none"});
+    `,""),m.refresh()}).catch(t=>{u.error({position:"topRight",message:"Sorry, there was an error fetching images. Please try again!"}),console.error("Error fetching images:",t)}).finally(()=>{i.style.display="none"});
 //# sourceMappingURL=commonHelpers.js.map
