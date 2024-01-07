@@ -48,11 +48,12 @@ const getImages = (params) => {
     return fetch(`https://pixabay.com/api/?${params}`)
         .then((response) => {
             if (!response.ok) {
-                throw new Error("Somthing wrong")
-            }
+                throw new Error(response.statusText)
+            } 
             return response.json();
         })
         .then(({ hits }) => {
+            if (hits.length > 0) {
             imagesGallery.innerHTML = hits.reduce((html, image) => html + `
         <li class="gallery-item">
          <a href=${image.largeImageURL}> 
@@ -67,14 +68,22 @@ const getImages = (params) => {
        </li>
     `, "")
             lightbox.refresh();
+            }
+            else {
+                 iziToast.error({
+        position: 'topRight',
+        messageColor: '#FFFFFF',
+        backgroundColor: '#EF4040',
+        messageSize: '8px',
+        messageLineHeight: '1.5',
+        message: 'Sorry, there are no images matching your search query. Please try again!',
+      });
+            }
+       
         })
     
         .catch(error => {
-    iziToast.error({
-        position: 'topRight',
-        message: 'Sorry, there was an error fetching images. Please try again!',
-    });
-    console.error('Error fetching images:', error);
+        console.error(error.message);
         })
         .finally(() => {
             loader.style.display = 'none';
