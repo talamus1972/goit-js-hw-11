@@ -8,7 +8,7 @@ const form = document.querySelector('.form');
 const imagesGallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 
-// const BASE_URL = "https://pixabay.com/api/";
+const BASE_URL = "https://pixabay.com/api/?";
 const API_KEY = "41564235-b9b3b0b401bd21d391a887255";
 
 const searchParamsDefault = {
@@ -45,7 +45,7 @@ event.currentTarget.reset();
 });
 
 const getImages = (params) => {
-    return fetch(`https://pixabay.com/api/?${params}`)
+    return fetch(BASE_URL + `${params}`)
         .then((response) => {
             if (!response.ok) {
                 throw new Error(response.statusText)
