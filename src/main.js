@@ -44,34 +44,32 @@ const getImages = (params) => {
             } 
             return response.json();
         })
-        .then(({ hits }) => {
-            if (!hits.length === 0) {
-            imagesGallery.innerHTML = hits.reduce((html, image) => html + `
-        <li class="gallery-item">
-         <a href=${image.largeImageURL}> 
-          <img class="gallery-img" src =${image.webformatURL} alt=${image.tags}/>
-        </a>
-        <div class="gallery-text-box">
-          <p>Likes: <span class="text-value">${image.likes}</span></p>
-          <p>views: <span class="text-value">${image.views}</span></p>
-          <p>comments: <span class="text-value">${image.comments}</span></p>
-          <p>downloads: <span class="text-value">${image.downloads}</span></p>
-      </div>
-       </li>
-    `, "")
-            lightbox.refresh();
+       .then(({ hits }) => {
+            if (hits.length === 0) {
+                iziToast.error({
+                    position: 'topRight',
+                    messageColor: '#FFFFFF',
+                    backgroundColor: '#EF4040',
+                    titleSize: '8px',
+                    closeOnEscape: true,
+                    message: 'Sorry, there are no images matching your search query. Please try again!',
+                });
+            } else {
+                imagesGallery.innerHTML = hits.reduce((html, image) => html + `
+                    <li class="gallery-item">
+                        <a href=${image.largeImageURL}> 
+                            <img class="gallery-img" src=${image.webformatURL} alt=${image.tags}/>
+                        </a>
+                        <div class="gallery-text-box">
+                            <p>Likes: <span class="text-value">${image.likes}</span></p>
+                            <p>Views: <span class="text-value">${image.views}</span></p>
+                            <p>Comments: <span class="text-value">${image.comments}</span></p>
+                            <p>Downloads: <span class="text-value">${image.downloads}</span></p>
+                        </div>
+                    </li>
+                `, "");
+                lightbox.refresh();
             }
-            else {
-            iziToast.error({
-            position: 'topRight',
-            messageColor: '#FFFFFF',
-            backgroundColor: '#EF4040',
-            titleSize: '8px',
-            closeOnEscape: true,
-            message: 'Sorry, there are no images matching your search query. Please try again!',
-      });
-            }
-       
         })
     
         .catch(error => {
