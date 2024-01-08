@@ -19,14 +19,6 @@ const searchParamsDefault = {
   safesearch: true,
 };
 
-
-// const url = new URL(BASE_URL);
-// url.searchParams.append("key", API_KEY);
-// url.searchParams.append("q", "query");
-// url.searchParams.append("image_type", "foto");
-// url.searchParams.append("orientation", "horizontal");
-// url.searchParams.append("safesearch", "true");
-
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
@@ -48,12 +40,12 @@ const getImages = (params) => {
     return fetch(BASE_URL + `${params}`)
         .then((response) => {
             if (!response.ok) {
-                throw new Error(response.statusText)
+                throw new Error(`Something went wrong. Please try again later.`)
             } 
             return response.json();
         })
         .then(({ hits }) => {
-            if (hits.length > 0) {
+            if (!hits.length === 0) {
             imagesGallery.innerHTML = hits.reduce((html, image) => html + `
         <li class="gallery-item">
          <a href=${image.largeImageURL}> 
