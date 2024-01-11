@@ -67,7 +67,6 @@ const getImages = params => {
             'Sorry, there are no images matching your search query. Please try again!',
         });
       } else {
-        imagesGallery.innerHTML = '';
         imagesGallery.innerHTML = hits.reduce(
           (html, image) =>
             html +
